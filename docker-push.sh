@@ -36,4 +36,4 @@ fi
 
 
 # Build the docker image
-docker push "$REGISTRY"/"$QUAY_USERNAME"/"$IMAGE_NAME":"$GIT_HASH" .
+docker push "$REGISTRY"/"$QUAY_USERNAME"/"$IMAGE_NAME":"$GIT_HASH"

@@ -52,7 +52,7 @@ echo
 echo
 
 # Replace the image in the deployment
-awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
+awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > modified.yaml
 
 echo after
 echo ----------------

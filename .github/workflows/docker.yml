@@ -77,7 +77,7 @@ jobs:
         run:
           pwd
           ls -l
-          kubectl apply -f deployment.yaml
+          kubectl apply -f modified.yaml
 
       - name: Test service URLs
         run: |

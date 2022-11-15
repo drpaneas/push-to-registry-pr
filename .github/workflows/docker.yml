@@ -79,7 +79,6 @@ jobs:
       - name: Test service URLs
         run: |
           sleep 60
-          
           minikube service list
           kubectl get deployments
           kubectl get pods

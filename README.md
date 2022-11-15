@@ -2,28 +2,15 @@
 This is a testing repository to learn how I can push images to a registry per pull request
 
 
-## How to use
+## How it works
 
-## Build
+1. This is a simple Go web server that listens on port 8080 and returns the git commit hash from which the source was built.
+2. When you push a new commit, a GitHub action is triggered that builds a Docker image and pushes it quay.io
+3. The image is tagged with the git commit hash
+4. Also a minikube cluster is started and the image is deployed to it
+5. The image is exposed via a NodePort service
+6. We test the service by calling it with curl
 
-```bash
-# Inside GitHub Actions
-./docker-build.sh "${{ env.IMAGE_TAG }}" "${{ env.USERNAME }}" "${{ env.IMAGE_NAME }}" "${{ env.REGISTRY }}"
-```
+This verifies that we can build images and deploy them to a cluster per commit/PR.
 
-# Locally
-./docker-build.sh $(git rev-parse HEAD) pgeorgia push-to-registry-pr quay.io
-```
-
-### Run
-
-```bash
-docker run --rm --publish 8081:8081 quay.io/pgeorgia/push-to-registry-pr:$(git rev-parse HEAD)`
-```
-
-Test:
-
-```bash
-$ curl localhost:8081
-Webserver build commit: "18b123523b667f4f800464176d6f7bcb0e07f656"%
-```
+Note: the quay.io image is public.

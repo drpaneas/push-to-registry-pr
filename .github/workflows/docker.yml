@@ -26,7 +26,7 @@ env:
   PASSWORD: ${{ secrets.QUAY_PASSWORD }}
 
 jobs:
-  build-and-push-image:
+  build-push-deploy-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -67,12 +67,7 @@ jobs:
       - name: Test service URLs
         run: |
           sleep 60
-          pod=$(oc get pods -A | grep openshift | awk -F ' ' '{print $1}' | tail -n 1); oc describe pods $pod
-          oc get deployments go-app -o yaml
           minikube service list
-          kubectl get deployments
-          kubectl get pods
-          kubectl get svc
           minikube service go-app --url
           echo "------------------opening the service------------------"
-          curl $(minikube service go-app --url)
+          curl --silent $(minikube service go-app --url)

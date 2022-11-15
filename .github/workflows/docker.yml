@@ -63,7 +63,7 @@ jobs:
 
       - name: Test service URLs
         run: |
-          sleep 60
+          oc get deployments go-app -o yaml
           minikube service list
           kubectl get deployments
           kubectl get pods

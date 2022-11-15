@@ -46,5 +46,9 @@ awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
 # Applying the YAML
 ls
 pwd
+echo before
 cat deployment.yaml
+echo after
+ls
+cat deployment
 

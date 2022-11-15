@@ -40,8 +40,7 @@ IMAGE="$REGISTRY"/"$QUAY_USERNAME"/"$IMAGE_NAME":"$GIT_HASH"
 
 echo IMAGE: "$IMAGE"
 
-# Replace the image in the deployment
-awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
+
 
 # Applying the YAML
 echo before
@@ -51,6 +50,10 @@ ls -l deployment.yaml
 cat deployment.yaml
 echo
 echo
+
+# Replace the image in the deployment
+awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
+
 echo after
 echo ----------------
 ls -l deployment.yaml

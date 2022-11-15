@@ -66,6 +66,8 @@ jobs:
 
       - name: Test service URLs
         run: |
+          sleep 60
+          pod=$(oc get pods -A | grep openshift | awk -F ' ' '{print $1}' | tail -n 1); oc describe pods $pod
           oc get deployments go-app -o yaml
           minikube service list
           kubectl get deployments

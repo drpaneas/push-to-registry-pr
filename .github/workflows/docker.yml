@@ -51,10 +51,10 @@ jobs:
           tag: ${{ env.IMAGE_TAG }}
           image: ${{ env.IMAGE_NAME }}
 
-#      - name: Build and push Docker image
-#        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-#        with:
-#          context: .
-#          push: true
-#          tags: ${{ steps.meta.outputs.tags }}
-#          labels: ${{ steps.meta.outputs.labels }}
+      - name: Push Docker Image
+        run: ./docker-push.sh "$tag" "$username" "$image" "$registry"
+        env:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.USERNAME }}
+          tag: ${{ env.IMAGE_TAG }}
+          image: ${{ env.IMAGE_NAME }}

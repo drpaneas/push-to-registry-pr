@@ -50,5 +50,5 @@ echo before
 cat deployment.yaml
 echo after
 ls
-cat deployment
+cat deployment.yaml
 

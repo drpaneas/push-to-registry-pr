@@ -41,7 +41,7 @@ IMAGE="$REGISTRY"/"$QUAY_USERNAME"/"$IMAGE_NAME":"$GIT_HASH"
 echo IMAGE: "$IMAGE"
 
 # Replace the image in the deployment
-sed -i "s/REPLACEME/$IMAGE/g" deployment.yaml
+sed -i "s/REPLACEME/$IMAGE" deployment.yaml
 
 # Applying the YAML
 

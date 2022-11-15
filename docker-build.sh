@@ -35,5 +35,8 @@ if [ -z "$REGISTRY" ]; then
 fi
 
 
+# Find the image
+docker image ls
+
 # Build the docker image
 docker build -t "$REGISTRY"/"$QUAY_USERNAME"/"$IMAGE_NAME":"$GIT_HASH" .

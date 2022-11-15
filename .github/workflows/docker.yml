@@ -44,28 +44,13 @@ jobs:
           password: ${{ env.PASSWORD }}
 
       - name: Build Docker Image
-        run: ./docker-build.sh "$tag" "$username" "$image" "$registry"
-        env:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ env.USERNAME }}
-          tag: ${{ env.IMAGE_TAG }}
-          image: ${{ env.IMAGE_NAME }}
+        run: ./docker-build.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Push Docker Image
-        run: ./docker-push.sh "$tag" "$username" "$image" "$registry"
-        env:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ env.USERNAME }}
-          tag: ${{ env.IMAGE_TAG }}
-          image: ${{ env.IMAGE_NAME }}
+        run: ./docker-push.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Modify the manifest
-        run: ./k8s-deploy.sh "$tag" "$username" "$image" "$registry"
-        env:
-          registry: ${{ env.REGISTRY }}
-          username: pgeorgia
-          tag: ${{ env.IMAGE_TAG }}
-          image: ${{ env.IMAGE_NAME }}
+        run: ./k8s-deploy.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master

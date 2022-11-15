@@ -59,6 +59,14 @@ jobs:
           tag: ${{ env.IMAGE_TAG }}
           image: ${{ env.IMAGE_NAME }}
 
+      - name: Modify the manifest
+        run: ./k8s-deploy.sh "$tag" "$username" "$image" "$registry"
+        env:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.USERNAME }}
+          tag: ${{ env.IMAGE_TAG }}
+          image: ${{ env.IMAGE_NAME }}
+
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 

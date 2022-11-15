@@ -22,7 +22,7 @@ var Commit = func() string {
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, err := fmt.Fprintf(w, "Webserver build commit:, %q", html.EscapeString(Commit))
+		_, err := fmt.Fprintf(w, "Webserver build commit: %q", html.EscapeString(Commit))
 		if err != nil {
 			return
 		}

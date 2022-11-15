@@ -59,18 +59,16 @@ jobs:
           tag: ${{ env.IMAGE_TAG }}
           image: ${{ env.IMAGE_NAME }}
 
-  cluster:
-    runs-on: ubuntu-latest
-    name: deploy to minikube
-    steps:
-      - uses: actions/checkout@v2
       - name: Start minikube
         uses: medyagh/setup-minikube@master
+
       - name: Try the cluster !
         run: kubectl get pods -A
+
       - name: Deploy to minikube
         run:
           kubectl apply -f deployment.yaml
+
       - name: Test service URLs
         run: |
           minikube service list

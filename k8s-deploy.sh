@@ -53,7 +53,6 @@ echo
 echo
 echo after
 echo ----------------
-echo after
 ls -l deployment.yaml
 cat deployment.yaml
 

@@ -47,8 +47,8 @@ awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
 ls
 pwd
 echo before
-cat deployment.yaml
+cat /home/runner/work/push-to-registry-pr/push-to-registry-pr/deployment.yaml
 echo after
 ls
-cat deployment.yaml
+cat /home/runner/work/push-to-registry-pr/push-to-registry-pr/deployment.yaml
 

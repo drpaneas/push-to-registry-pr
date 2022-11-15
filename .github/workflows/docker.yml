@@ -75,7 +75,7 @@ jobs:
 
       - name: Deploy to minikube
         run:
-          kubectl apply -f deployment.yaml
+          kubectl apply -f /home/runner/work/push-to-registry-pr/push-to-registry-pr/deployment.yaml
 
       - name: Test service URLs
         run: |

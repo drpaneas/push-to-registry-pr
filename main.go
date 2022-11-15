@@ -24,6 +24,6 @@ func main() {
 		_, _ = fmt.Fprintf(w, "Webserver build commit: %q", html.EscapeString(Commit))
 	})
 
-	_ = http.ListenAndServe(":8081", nil)
+	_ = http.ListenAndServe(":8080", nil)
 
 }

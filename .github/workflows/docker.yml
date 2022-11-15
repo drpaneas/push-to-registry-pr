@@ -63,7 +63,7 @@ jobs:
         run: ./k8s-deploy.sh "$tag" "$username" "$image" "$registry"
         env:
           registry: ${{ env.REGISTRY }}
-          username: ${{ env.USERNAME }}
+          username: pgeorgia
           tag: ${{ env.IMAGE_TAG }}
           image: ${{ env.IMAGE_NAME }}
 
@@ -78,7 +78,8 @@ jobs:
 
       - name: Test service URLs
         run: |
-          sleep 120
+          sleep 60
+          
           minikube service list
           kubectl get deployments
           kubectl get pods

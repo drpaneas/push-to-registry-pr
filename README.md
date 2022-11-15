@@ -18,12 +18,12 @@ This is a testing repository to learn how I can push images to a registry per pu
 ### Run
 
 ```bash
-docker run --rm --publish 8081:8081 push-to-registry-pr:$(git rev-parse HEAD)
+docker run --rm --publish 8081:8081 quay.io/pgeorgia/push-to-registry-pr:$(git rev-parse HEAD)`
 ```
 
 Test:
 
 ```bash
 $ curl localhost:8081
-Webserver build commit: "1676991a948a61bb0fb9aa37800c36c3f7150b7e"%
+Webserver build commit: "18b123523b667f4f800464176d6f7bcb0e07f656"%
 ```

@@ -44,6 +44,7 @@ echo IMAGE: "$IMAGE"
 awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
 
 # Applying the YAML
-
+ls
+pwd
 cat deployment.yaml
 

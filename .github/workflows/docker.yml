@@ -58,6 +58,9 @@ jobs:
       - name: Try the cluster !
         run: kubectl get pods -A
 
+      - name: Try the image existence
+        run: docker pull ${{ env.REGISTRY }}/${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
       - name: Deploy to minikube
         run: kubectl apply -f modified.yaml
 

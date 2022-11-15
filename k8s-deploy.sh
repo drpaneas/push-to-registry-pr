@@ -44,11 +44,16 @@ echo IMAGE: "$IMAGE"
 awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > deployment.yaml
 
 # Applying the YAML
-ls
-pwd
 echo before
-cat /home/runner/work/push-to-registry-pr/push-to-registry-pr/deployment.yaml
+echo ----------------
+pwd
+ls -l deployment.yaml
+cat deployment.yaml
+echo
+echo
 echo after
-ls
-cat /home/runner/work/push-to-registry-pr/push-to-registry-pr/deployment.yaml
+echo ----------------
+echo after
+ls -l deployment.yaml
+cat deployment.yaml
 

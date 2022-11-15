@@ -22,7 +22,7 @@ env:
   REGISTRY: quay.io
   IMAGE_NAME: push-to-registry-pr
   IMAGE_TAG: ${{ github.sha }}
-  USERNAME: ${{ secrets.QUAY_USERNAME }}
+  USERNAME: pgeorgia
   PASSWORD: ${{ secrets.QUAY_PASSWORD }}
 
 jobs:
@@ -44,13 +44,13 @@ jobs:
           password: ${{ env.PASSWORD }}
 
       - name: Build Docker Image
-        run: ./docker-build.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
+        run: ./docker-build.sh ${{ github.sha }} ${{ env.USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Push Docker Image
-        run: ./docker-push.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
+        run: ./docker-push.sh ${{ github.sha }} ${{ env.USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Modify the manifest
-        run: ./k8s-deploy.sh ${{ github.sha }} ${{ secrets.QUAY_USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
+        run: ./k8s-deploy.sh ${{ github.sha }} ${{ env.USERNAME }} ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master

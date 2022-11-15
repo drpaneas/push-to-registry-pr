@@ -45,7 +45,7 @@ jobs:
 
       - name: Build Docker Image
         run: ./docker-build.sh "$tag" "$username" "$image" "$registry"
-        with:
+        env:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.USERNAME }}
           tag: ${{ env.IMAGE_TAG }}

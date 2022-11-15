@@ -56,6 +56,6 @@ awk '{sub("REPLACEME","$IMGAGE")}1' deployment.yaml > modified.yaml
 
 echo after
 echo ----------------
-ls -l deployment.yaml
-cat deployment.yaml
+ls -l modified.yaml
+cat modified.yaml
 

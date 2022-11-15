@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"html"
-	"log"
 	"net/http"
 	"runtime/debug"
 )
@@ -22,12 +21,9 @@ var Commit = func() string {
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, err := fmt.Fprintf(w, "Webserver build commit: %q", html.EscapeString(Commit))
-		if err != nil {
-			return
-		}
+		_, _ = fmt.Fprintf(w, "Webserver build commit: %q", html.EscapeString(Commit))
 	})
 
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	_ = http.ListenAndServe(":8081", nil)
 
 }

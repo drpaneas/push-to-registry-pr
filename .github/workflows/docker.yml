@@ -82,6 +82,5 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service go-app --url
-          echo "------------------opening the service------------------"
-          curl $(minikube service go-app --url)     
+          kubectl get deployments
+          kubectl get svc

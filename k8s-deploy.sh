@@ -52,7 +52,8 @@ echo
 echo
 
 # Replace the image in the deployment
-awk '{sub("REPLACEME","$IMAGE")}1' deployment.yaml > modified.yaml
+cat deployment.yaml|  awk -v srch="REPLACEME" -v repl="$IMAGE" '{ sub(srch,repl,$0); print $0 }' > modified.yaml
+
 
 echo after
 echo ----------------

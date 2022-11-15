@@ -71,3 +71,4 @@ jobs:
           minikube service go-app --url
           echo "------------------opening the service------------------"
           curl --silent $(minikube service go-app --url)
+          curl --silent $(minikube service go-app --url) | grep ${{ github.sha }}
